@@ -1,14 +1,21 @@
 package com.dam.laprimera
 
 import android.util.Log
+import android.widget.Space
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -28,7 +35,59 @@ import com.dam.laprimera.ui.theme.LaPrimeraTheme
 
 @Composable
 fun InterfazUsuario(miViewModel: MyViewModel){
-    val TAG_LOG: String = "Mensaje IU"
+
+
+    /*
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ){
+        Text(
+            text = "RONDA",
+            fontSize = 18.sp
+        )
+        Text(
+            text = miViewModel.ronda.toString(),
+            fontSize = 18.sp
+        )
+    }
+
+    Row(
+        modifier = Modifier.padding(16.dp)
+    ){
+        Button(
+            onClick = {
+                if(miViewModel.isPlaying){
+                    miViewModel.reset()
+                }else{
+                    miViewModel.start()
+                }
+            },
+            modifier = Modifier.size(100.dp),
+            ) {
+            Text(
+                if(miViewModel.isPlaying) "resert" else "start"
+            )
+        }
+
+        Spacer(
+            modifier = Modifier.width(16.dp)
+        )
+
+        Button(
+            onClick = { miViewModel.sumarRonda()},
+            modifier = Modifier.size(50.dp)
+        ) {
+            Icon(Icons.Default.PlayArrow, contentDescription = "play")
+        }
+    }
+
+*/
+
+
+
+    val TAG_LOG: String = "Mensajesandr IU"
 
     Text(
         text = "numeros: ${miViewModel.getListaRandom()}",
@@ -72,7 +131,7 @@ fun Login(miViewModel: MyViewModel){
             )
         }
 
-        if(miViewModel.name.value.length > 3){
+        if(miViewModel.getTexto().length > 3){
             Text(
                 text = "nombre: ${miViewModel.getTexto()}!",
                 fontSize = 24.sp,
@@ -83,7 +142,8 @@ fun Login(miViewModel: MyViewModel){
         OutlinedTextField(
             value = miViewModel.getTexto(),
             onValueChange = {
-                miViewModel.name.value = it
+                //miViewModel.name.value = it
+                //miViewModel.getTexto() = it
             },
             label = {
                 Text(
@@ -144,4 +204,5 @@ fun GreetingPreview(){
     LaPrimeraTheme {
         InterfazUsuario(miViewModel = MyViewModel())
     }
+
 }
